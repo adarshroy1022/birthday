@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Birthday Page</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      background-image: url('https://www.transparenttextures.com/patterns/pink-dust.png');
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5vw;
+      cursor: pointer;
+    }
+    .name-header {
+      font-size: 9vw;
+      font-weight: bold;
+      background: linear-gradient(to right, #ff99cc, #ff66a3,#800080);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+    }
+    .box {
+      background-color: white;
+      padding: 0.5vw;
+      border-radius: 30px;
+      box-shadow: 0 12px 10px rgba(0, 0, 0, 0.2);
+      max-width: 90vw;
+      text-align: center;
+      box-sizing: border-box;
+      z-index: 1;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
+    .box:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+    .box:active {
+      transform: scale(0.98);
+    }
+    .inner-box {
+      background-color: #ffd6e6;
+      border-radius: 20px;
+      padding: 3vw;
+      box-shadow: inset 0 0 10px rgba(255, 102, 163, 0.4);
+      margin-bottom: 0.2vw;
+    }
+    .inner-box h1 {
+      color: #ff4d88;
+      margin-bottom: 0.5em;
+      font-size: 8vw;
+      font-style: italic;
+      text-shadow: 2px 2px 4px #ff99cc, 4px 4px 8px #d63384;
+      background: linear-gradient(45deg, #ff99cc, #ff66a3, #ff4d88, #ff99cc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glitter 2s linear infinite;
+    }
+    @keyframes glitter {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .box p {
+      color: #555;
+      font-size: 5vw;
+      max-font-size: 20px;
+      margin: 1.2em 0;
+    }
+    .btn {
+      background-color: #ff66a3;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 4.5vw;
+      max-font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #ff3385;
+    }
+    @media (min-width: 600px) {
+      .inner-box h1 {
+        font-size: 48px;
+      }
+      .box p {
+        font-size: 20px;
+      }
+      .btn {
+        font-size: 18px;
+      }
+      .name-header {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Heart background animation -->
+  <script>
+    const numHearts = 30;
+    for (let i = 0; i < numHearts; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = Math.random() * 100 + 'vh';
+      heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+      heart.style.opacity = Math.random();
+      document.body.appendChild(heart);
+    }
+  </script>
+  <div class="container" onclick="window.location.href='birthday2.html'">
+    <div class="name-header">Mirror of Memories</div>
+    <div class="box">
+      <div class="inner-box">
+        <img src="heart.png" alt="Birthday Logo" style="width: 80px; height: auto; margin-bottom: 10px;">
+
+        <h1>Click to Unlock <br> Memories</h1>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

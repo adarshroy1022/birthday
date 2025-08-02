@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mirror of Memory</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6f0;
+      background-image: url('https://www.transparenttextures.com/patterns/pink-dust.png');
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .name-header {
+      font-size: 6vw;
+      font-weight: bold;
+      background: linear-gradient(to right, #ff99cc, #ff66a3, #800080);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .gallery-container {
+      display: flex;
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;
+      gap: 40px;
+      padding: 40px;
+      padding-left: calc(50vw - 240px);
+      padding-right: calc(50vw - 240px);
+      width: 100vw;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      z-index: 2;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      perspective: 1000px;
+      perspective-origin: center;
+      background-color: transparent;
+    }
+
+    .gallery-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery-item {
+      min-width: 400px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      scroll-snap-align: center;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 20px 20px 0 0;
+      transition: filter 0.3s ease, transform 0.3s ease;
+    }
+
+    .gallery-caption {
+      font-family: monospace;
+      font-size: 16px;
+      white-space: pre-wrap;
+      text-align: center;
+      padding: 10px 20px;
+      width: calc(100% - 40px);
+      box-sizing: border-box;
+      background-color: transparent;
+      border-radius: 0 0 20px 20px;
+      margin-top: 8px;
+      min-height: 50px;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+      z-index: 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .btn {
+      background-color: #ff66a3;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 20px;
+      z-index: 2;
+    }
+
+    .btn:hover {
+      background-color: #ff3385;
+    }
+  </style>
+</head>
+<body>
+  <div class="name-header">Mirror of Memories</div>
+  <div class="gallery-container" id="gallery">
+    <div class="gallery-item">
+      <img src="./images/memory/Image1.jpg" alt="Memory 1">
+      <div class="gallery-caption" data-text="Who knew one trip could turn two people into a forever kind of friendship? 🫶"></div>
+    </div>
+    <div class="gallery-item">
+      <img src="./images/memory/Image2.JPG" alt="Memory 2">
+      <div class="gallery-caption" data-text="Each memory stitched us closer. We weren’t just exploring places… we were discovering friendship. 😍"></div>
+    </div>
+    <div class="gallery-item">
+      <img src="./images/memory/image3.jpeg" alt="Memory 3">
+      <div class="gallery-caption" data-text="Every flicker of the flame reminds me how lucky I am to share this moment with you. ❤️‍🔥"></div>
+    </div>
+    <div class="gallery-item">
+      <img src="./images/memory/image4.jpg" alt="Memory 4">
+      <div class="gallery-caption" data-text="Surprise moments flower with flower 🫣"></div>
+    </div>
+    <div class="gallery-item">
+      <img src="./images/memory/image5.jpg" alt="Memory 5">
+      <div class="gallery-caption" data-text="Walking through my college with you felt like introducing my past to my present.😎"></div>
+    </div>
+    <div class="gallery-item">
+      <img src="./images/memory/image6.jpg" alt="Memory 6">
+      <div class="gallery-caption" data-text="The garden glowed, the bridge sparkled, but nothing shined brighter than the joy of being there together.🔥"></div>
+    </div>
+    <div class="gallery-item">
+      <img src="./images/memory/image7.jpg" alt="Memory 7">
+      <div class="gallery-caption" data-text=" We walked with giants, laughed like kids, and made memories that even T-Rex couldn’t crush 🦖 "></div>
+    </div>
+     <div class="gallery-item">
+      <img src="./images/memory/image8.jpg" alt="Memory 7">
+      <div class="gallery-caption" data-text="We didn’t just visit a fort—we walked through the clouds, laughed in the mist, and felt like we were on top of the world.☁️🏯 "></div>
+    </div>
+  <div class="gallery-item">
+      <img src="./images/memory/image9.jpg" alt="Memory 7">
+      <div class="gallery-caption" data-text="It wasn’t just the waterfall that took my breath away—it was the moment, the view, and you in it.🌊✨"></div>
+    </div>
+  </div>
+ 
+  <button class="btn" onclick="window.location.href='index.html'">Next 🎁</button>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const items = document.querySelectorAll('.gallery-item');
+    let currentTypingTimeout;
+
+    function typeCaption(element, text) {
+      clearTimeout(currentTypingTimeout);
+      element.textContent = '';
+      let i = 0;
+
+      function typeChar() {
+        if (i < text.length) {
+          element.textContent += text.charAt(i);
+          i++;
+          currentTypingTimeout = setTimeout(typeChar, 40); // Speed control
+        }
+      }
+      typeChar();
+    }
+
+    function updateGallery() {
+      const center = gallery.scrollLeft + gallery.offsetWidth / 2;
+      items.forEach((item, index) => {
+        const itemCenter = item.offsetLeft + item.offsetWidth / 2;
+        const distance = itemCenter - center;
+        const scale = Math.max(0.6, 1 - Math.abs(distance) / 800);
+        const rotateY = distance / 20;
+        const zIndex = 1000 - Math.abs(distance);
+
+        item.style.transform = `scale(${scale}) rotateY(${rotateY}deg)`;
+        item.style.zIndex = zIndex;
+
+        const isFocused = Math.abs(distance) < item.offsetWidth / 2;
+        item.style.opacity = isFocused || Math.abs(index - Math.round(center / item.offsetWidth)) <= 1 ? '1' : '0.1';
+
+        const image = item.querySelector('img');
+        if (image) {
+          image.style.filter = isFocused ? 'brightness(1)' : 'brightness(0.4)';
+        }
+
+        const caption = item.querySelector('.gallery-caption');
+        if (caption) {
+          if (isFocused) {
+            typeCaption(caption, caption.getAttribute('data-text'));
+          } else {
+            caption.textContent = '';
+          }
+        }
+      });
+    }
+
+    gallery.addEventListener('scroll', () => {
+      clearTimeout(currentTypingTimeout);
+      setTimeout(updateGallery, 150);
+    });
+
+    window.addEventListener('load', () => {
+      updateGallery();
+
+      const numHearts = 30;
+      for (let i = 0; i < numHearts; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        heart.style.opacity = Math.random();
+        document.body.appendChild(heart);
+      }
+    });
+  </script>
+</body>
+</html>
